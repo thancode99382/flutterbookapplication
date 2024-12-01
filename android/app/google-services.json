@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "292861273477",
+    "project_id": "bookfahasaflutter",
+    "storage_bucket": "bookfahasaflutter.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292861273477:android:d383399dc2be947c3fd0ec",
+        "android_client_info": {
+          "package_name": "com.example.doanflutterfahasa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCMCRJXcJ91aVGrGLJpQuf6ZKZIqBlf0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
