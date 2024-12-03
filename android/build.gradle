@@ -1,3 +1,17 @@
+
+buildscript {
+    ext.kotlin_version = '1.9.0'  // Cập nhật lên phiên bản Kotlin mới nhất
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+
 allprojects {
     repositories {
         google()
