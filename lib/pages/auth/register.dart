@@ -25,8 +25,8 @@ class Register extends StatelessWidget
                                 hintText: "Bạn hãy nhập email vào"
                             ),
                             const CustomInputField(
-                                label: "Password",
-                                hintText: "Bạn hãy nhập mật khẩu vào",
+                                label: "Mật khẩu",
+                                hintText: "Nhập mật khẩu",
                                 obscureText: true,
                               icon: FontAwesomeIcons.eyeSlash,
 
