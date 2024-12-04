@@ -9,8 +9,9 @@ class CustomInputField extends StatelessWidget {
   final TextEditingController? controller;
   final bool obscureText;
   final IconData? icon;
+  final VoidCallback? onTapPassword;
 
-  const CustomInputField({Key? key, required this.label, required this.hintText, this.controller, this.obscureText = false, this.icon}) : super(key:key);
+  const CustomInputField({Key? key, required this.label, required this.hintText, this.controller, this.obscureText = false, this.icon,  this.onTapPassword}) : super(key:key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class CustomInputField extends StatelessWidget {
             controller: controller,
             obscureText: obscureText,
             decoration: InputDecoration(
-              suffixIcon: Icon(icon,size: 16,color: Colors.grey,),
+              suffixIcon: GestureDetector( onTap: onTapPassword, child: Icon(icon,size: 16,color: Colors.grey,)),
               hintText: hintText,
               hintStyle: GoogleFonts.openSans(
                 textStyle: const TextStyle(

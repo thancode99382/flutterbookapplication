@@ -3,22 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'app/account.dart';
 import 'app/cart.dart';
 import 'app/home.dart';
-import 'app/suggest.dart';
 import 'app/notification.dart';
-import 'auth/account.dart';
-class MainLayout extends StatefulWidget{
+import 'app/suggest.dart';
 
-  const MainLayout({super.key});
+class MainLayoutPrivate extends StatefulWidget{
+
+  const MainLayoutPrivate({super.key});
 
   @override
-  State<MainLayout> createState() {
-    return _MainLayoutState();
+  State<MainLayoutPrivate> createState() {
+    return _MainLayoutPrivateState();
   }
 }
 
-class _MainLayoutState extends State<MainLayout>{
+class _MainLayoutPrivateState extends State<MainLayoutPrivate>{
 
 
   int _selectedIndex = 0;
@@ -47,11 +48,11 @@ class _MainLayoutState extends State<MainLayout>{
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: GoogleFonts.openSans(
-          textStyle: const TextStyle(
-            fontSize: 9,
-            color: Colors.red,
-            fontWeight: FontWeight.w700
-          )
+            textStyle: const TextStyle(
+                fontSize: 9,
+                color: Colors.red,
+                fontWeight: FontWeight.w700
+            )
         ),
         selectedItemColor: Colors.red,
         unselectedLabelStyle:  GoogleFonts.openSans(

@@ -1,16 +1,15 @@
-import 'package:doanflutterfahasa/pages/auth/register.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class Suggest extends StatelessWidget {
-  const Suggest({super.key});
+class Noti extends StatelessWidget {
+  const Noti({super.key});
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: const Text("Suggest"),
+        title: Text("Thông báo"),
       ),
     );
   }
