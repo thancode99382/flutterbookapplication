@@ -39,6 +39,8 @@ dependencies:
   google_fonts: ^6.2.1
   font_awesome_flutter: ^10.8.0
   flutter_svg: ^1.1.0  # Kiểm tra phiên bản mới nhất trên pub.dev
+  firebase_auth: ^5.3.1
+  cloud_firestore: ^5.4.4
 
 dev_dependencies:
   flutter_test:
