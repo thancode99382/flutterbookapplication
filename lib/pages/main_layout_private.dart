@@ -46,6 +46,7 @@ class _MainLayoutPrivateState extends State<MainLayoutPrivate>{
       body: _pages.elementAt(_selectedIndex),
 
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: GoogleFonts.openSans(
             textStyle: const TextStyle(

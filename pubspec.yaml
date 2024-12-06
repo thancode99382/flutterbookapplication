@@ -41,6 +41,7 @@ dependencies:
   flutter_svg: ^1.1.0  # Kiểm tra phiên bản mới nhất trên pub.dev
   firebase_auth: ^5.3.1
   cloud_firestore: ^5.4.4
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -59,8 +60,7 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-   - assets/images/roa.png
-   - assets/images/ico_emptycart.png
+   - assets/images/
   
   uses-material-design: true
   
