@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'auth/cart.dart';
 import 'app/home.dart';
 import 'auth/suggest.dart';
-import 'auth/notification.dart';
+import 'app/notification.dart';
 import 'auth/account.dart';
 class MainLayoutPublic extends StatefulWidget{
 
@@ -45,6 +45,7 @@ class _MainLayoutPublicState extends State<MainLayoutPublic>{
       body: _pages.elementAt(_selectedIndex),
 
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle: GoogleFonts.openSans(
           textStyle: const TextStyle(
