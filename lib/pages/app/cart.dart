@@ -13,9 +13,9 @@ class Cart extends StatelessWidget
         return Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
+              iconTheme: const IconThemeData(color: Colors.white),
                 backgroundColor: Colors.red,
-                title: Center(
-                    child: Text("Giỏ hàng",
+                title:Text("Giỏ hàng",
                         style: GoogleFonts.openSans(
                             textStyle: const TextStyle(
                                 color: Colors.white,
@@ -24,7 +24,7 @@ class Cart extends StatelessWidget
                             )
                         )
                     )
-                )
+
             )
 
         );
