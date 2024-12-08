@@ -9,17 +9,26 @@ class Cart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       backgroundColor: Colors.white,
       appBar: AppBar(
+
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.red,
-          title: Center(
-              child: Text("Giỏ hàng",
+          iconTheme: const IconThemeData(
+            color: Colors.white
+          ),
+          title: Text("Giỏ hàng",
                   style: GoogleFonts.openSans(
                       textStyle: const TextStyle(
                     color: Colors.white,
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
-                  ))))),
+                  )
+                  )
+              )
+
+      ),
       body: Padding(
         padding: EdgeInsets.all(15),
         child: Center(

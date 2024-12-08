@@ -1,25 +1,24 @@
+import 'package:doanflutterfahasa/pages/main_layout_private.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 import '../../models/product.dart';
+import '../../providers/NavigatorProvider.dart';
 import '../../viewmodels/products_view_model.dart';
 import '../app/cart.dart';
+import '../main_layout_public.dart';
 
-class DetailProduct extends StatefulWidget
+
+
+class DetailProduct extends StatelessWidget
 {
-    final Product product;
-    const DetailProduct({super.key, required this.product});
-
-    @override
-    State<DetailProduct> createState() => _DetailProductState();
-}
-
-class _DetailProductState extends State<DetailProduct>
-{
-
+  final Product product;
+  const DetailProduct({super.key, required this.product});
 
 
 // Gọi hàm để thêm tất cả sản phẩm
@@ -28,6 +27,8 @@ class _DetailProductState extends State<DetailProduct>
     @override
     Widget build(BuildContext context)
     {
+
+      final navigationProvider = Provider.of<NavigationProvider>(context);
         return Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
@@ -46,21 +47,21 @@ class _DetailProductState extends State<DetailProduct>
                         children: [
 
 
-                            Image.network(widget.product.imageUrl),
+                            Image.network(product.imageUrl),
 
-                            Text("${NumberFormat('#,###','vi_VN').format(widget.product.price)} đ",style: GoogleFonts.openSans(
+                            Text("${NumberFormat('#,###','vi_VN').format(product.price)} đ",style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.red,
                                     fontSize: 24
                                 )
 
                             ),
-                            Text(widget.product.title,style: GoogleFonts.openSans(
+                            Text(product.title,style: GoogleFonts.openSans(
 
 
                                 )
                             ),
-                            Text("Còn ${widget.product.stock} quyển",style: GoogleFonts.openSans(
+                            Text("Còn ${product.stock} quyển",style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.w700,
                                     color: Colors.grey
                                 )
@@ -98,7 +99,7 @@ class _DetailProductState extends State<DetailProduct>
                                             Container(
 
                                                 padding: const EdgeInsets.symmetric(vertical: 8),
-                                                child: Text(widget.product.author,style: GoogleFonts.openSans(
+                                                child: Text(product.author,style: GoogleFonts.openSans(
                                                         fontWeight: FontWeight.w700
 
                                                     )
@@ -110,12 +111,12 @@ class _DetailProductState extends State<DetailProduct>
                                 ]
                             ),
 
-                            Text(widget.product.title,style: GoogleFonts.openSans(
+                            Text(product.title,style: GoogleFonts.openSans(
                                     fontWeight: FontWeight.bold
 
                                 )
                             ),
-                            Text(widget.product.description,style: GoogleFonts.openSans(
+                            Text(product.description,style: GoogleFonts.openSans(
 
                                 )
                             )
@@ -194,12 +195,24 @@ class _DetailProductState extends State<DetailProduct>
                             child: GestureDetector(
                                 onTap: ()
                                 {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)
-                                            {
-                                                return const Cart();
-                                            }
-                                        )
+                                  User? user = FirebaseAuth.instance.currentUser;
+
+                                  if(user == null){
+                                    navigationProvider.updateIndex(1);
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => const MainLayoutPublic()), // Trang giỏ hàng của bạn
                                     );
+                                  }else{
+                                    navigationProvider.updateIndex(4);
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => const MainLayoutPrivate()), // Trang giỏ hàng của bạn
+                                    );
+                                  }
+
+
+
                                 },
                                 child: Container(
 

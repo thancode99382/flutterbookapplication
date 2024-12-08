@@ -7,7 +7,6 @@ class AuthService{
 
   Future<User?> signUpWithFirebase(String email, String password) async{
 
-
     print("#### $email , $password");
       try{
         UserCredential userCredential = await _auth.createUserWithEmailAndPassword(email: email, password: password);
@@ -19,6 +18,15 @@ class AuthService{
             'createAt': FieldValue.serverTimestamp(),
           }
         );
+
+        FirebaseFirestore.instance.collection('carts').doc(userCredential.user!.uid).set(
+            {
+              'uid' : userCredential.user!.uid,
+              'products':[],
+              'createAt': FieldValue.serverTimestamp(),
+            }
+        );
+
 
         User? user = userCredential.user;
 
