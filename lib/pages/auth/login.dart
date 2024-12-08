@@ -1,9 +1,12 @@
+import 'package:doanflutterfahasa/pages/main_layout_private.dart';
+import 'package:doanflutterfahasa/providers/NavigatorProvider.dart';
 import 'package:doanflutterfahasa/service/auth/authservice.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import 'component/custom_button.dart';
 import 'component/custom_input_field.dart';
@@ -29,7 +32,8 @@ class _LoginState extends State<Login> {
 
 
 
-  void _submit()async{
+
+  void _submit(NavigationProvider navigationProvider)async{
 
     String email = _emailController.text;
     String password = _passwordController.text;
@@ -53,6 +57,13 @@ class _LoginState extends State<Login> {
 
     if(user != null){
       print("login successfully with: ${user.email}" );
+      navigationProvider.updateIndex(0);
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return const MainLayoutPrivate();
+      },)
+      );
+
+
     }else{
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Đăng ký Thất bại!')),
@@ -68,6 +79,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) 
   {
+    final navigationProvider = Provider.of<NavigationProvider>(context);
     return Container(
       padding: EdgeInsets.all(15),
       child: Column(
@@ -84,7 +96,7 @@ class _LoginState extends State<Login> {
               height: 40,
 
             ),
-            CustomButton(onTap: _submit, btnText: "Đăng nhập", btnHeight: 40,btnWidth: 250, btnColor: Colors.orange,fontWeight: FontWeight.w600,),
+            CustomButton(onTap:()=> _submit(navigationProvider), btnText: "Đăng nhập", btnHeight: 40,btnWidth: 250, btnColor: Colors.orange,fontWeight: FontWeight.w600,),
             const SizedBox(
               height: 80
             ),

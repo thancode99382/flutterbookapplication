@@ -2,26 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/NavigatorProvider.dart';
 import 'auth/cart.dart';
 import 'app/home.dart';
 import 'auth/suggest.dart';
 import 'app/notification.dart';
 import 'auth/account.dart';
-class MainLayoutPublic extends StatefulWidget{
-
-  const MainLayoutPublic({super.key});
-
-  @override
-  State<MainLayoutPublic> createState() {
-    return _MainLayoutPublicState();
-  }
-}
-
-class _MainLayoutPublicState extends State<MainLayoutPublic>{
 
 
-  int _selectedIndex = 0;
+class MainLayoutPublic extends StatelessWidget{
+
+
+   const MainLayoutPublic({super.key});
+
 
   // Danh sách các trang
   static const List<Widget> _pages = <Widget>[
@@ -32,17 +27,15 @@ class _MainLayoutPublicState extends State<MainLayoutPublic>{
     Cart(),
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
 
   @override
   Widget build(BuildContext context) {
+
+    final navigationProvider = Provider.of<NavigationProvider>(context);
+
     return Scaffold(
-      body: _pages.elementAt(_selectedIndex),
+      body: _pages[navigationProvider.selectIndex],
 
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
@@ -61,8 +54,8 @@ class _MainLayoutPublicState extends State<MainLayoutPublic>{
                 fontWeight: FontWeight.w700
             )
         ),
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        currentIndex: navigationProvider.selectIndex,
+        onTap: navigationProvider.updateIndex,
 
         items: const [
           BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.house, size: 17), label: 'Trang chủ'),

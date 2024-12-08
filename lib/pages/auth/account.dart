@@ -12,8 +12,10 @@ class Account extends StatelessWidget
     Widget build(BuildContext context)
     {
         return Scaffold(
+
             backgroundColor: Colors.white,
             appBar: AppBar(
+                automaticallyImplyLeading: false,
                 backgroundColor: Colors.red,
                 title: Center(
                     child: Text("Tài khoản",style: GoogleFonts.openSans(
@@ -31,6 +33,7 @@ class Account extends StatelessWidget
                 child: Scaffold(
                     backgroundColor: Colors.white,
                     appBar: AppBar(
+                        automaticallyImplyLeading: false,
                         backgroundColor: Colors.white,
                         title: const TabBar(
 

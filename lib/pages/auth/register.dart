@@ -1,3 +1,4 @@
+import 'package:doanflutterfahasa/pages/main_layout_private.dart';
 import 'package:doanflutterfahasa/service/auth/authservice.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,11 @@ class _RegisterState extends State<Register>
 
        if(user != null){
          print("register successfully with: ${user.email}" );
+
+         Navigator.push(context, MaterialPageRoute(builder: (context) {
+           return const MainLayoutPrivate();
+         },)
+         );
          ScaffoldMessenger.of(context).showSnackBar(
            const SnackBar(content: Text('Đăng ký thành công!')),
          );

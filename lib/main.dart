@@ -1,8 +1,10 @@
 import 'package:doanflutterfahasa/pages/main_layout_private.dart';
 import 'package:doanflutterfahasa/pages/main_layout_public.dart';
+import 'package:doanflutterfahasa/providers/NavigatorProvider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -11,7 +13,18 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(
+      
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_)=>NavigationProvider())
+        ],
+        child: const MyApp()
+      )
+      );
+      
+      
+
 }
 
 class MyApp extends StatelessWidget {
