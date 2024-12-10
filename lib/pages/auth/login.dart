@@ -66,7 +66,7 @@ class _LoginState extends State<Login> {
 
     }else{
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Đăng ký Thất bại!')),
+        const SnackBar(content: Text('Đăng nhập Thất bại!')),
       );
     }
 

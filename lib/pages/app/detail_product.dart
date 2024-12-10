@@ -131,9 +131,14 @@ class DetailProduct extends StatelessWidget
                 decoration: BoxDecoration(
 
                     color: Colors.white,
-                    border: Border.all(
-                        color: Colors.black12
-                    )
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 10, // Độ mờ của bóng
+                          spreadRadius: 1, // Độ rộng của bóng
+                          offset: const Offset(0,-2) // Vị trí bóng (0 ngang , - 2 dọc lên trên)
+                      )
+                    ]
                 ),
 
                 child: Row(
@@ -199,15 +204,17 @@ class DetailProduct extends StatelessWidget
 
                                   if(user == null){
                                     navigationProvider.updateIndex(1);
-                                    Navigator.push(
+                                    Navigator.pushAndRemoveUntil(
                                       context,
-                                      MaterialPageRoute(builder: (context) => const MainLayoutPublic()), // Trang giỏ hàng của bạn
+                                      MaterialPageRoute(builder: (context) => const MainLayoutPublic()),
+                                          (route) => false, // Xóa tất cả các route trước đó
                                     );
                                   }else{
                                     navigationProvider.updateIndex(4);
-                                    Navigator.push(
+                                    Navigator.pushAndRemoveUntil(
                                       context,
-                                      MaterialPageRoute(builder: (context) => const MainLayoutPrivate()), // Trang giỏ hàng của bạn
+                                      MaterialPageRoute(builder: (context) => const MainLayoutPrivate()),
+                                          (route) => false, // Xóa tất cả các route trước đó
                                     );
                                   }
 
@@ -219,7 +226,7 @@ class DetailProduct extends StatelessWidget
                                     height: 50,
                                     decoration: const BoxDecoration(
                                         color: Colors.red,
-                                        border: Border.symmetric(vertical: BorderSide(color: Colors.black12))
+
                                     ),
                                     child: Center(
                                         child: Text("Mua ngay",style: GoogleFonts.openSans(

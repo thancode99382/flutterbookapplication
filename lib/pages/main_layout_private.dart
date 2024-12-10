@@ -18,12 +18,12 @@ class MainLayoutPrivate extends StatelessWidget{
 
 
   // Danh sách các trang
-  static const List<Widget> _pages = <Widget>[
-    Home(),
+  static final List<Widget> _pages = <Widget>[
+    const Home(),
     Account(),
-    Suggest(),
-    Noti(),
-    Cart(),
+    const Suggest(),
+    const Noti(),
+    const Cart(),
   ];
 
 

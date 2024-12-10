@@ -29,7 +29,9 @@ class CustomInputField extends StatelessWidget {
         SizedBox(
           height: 40,
           child: TextFormField(
-            
+            style: const TextStyle(
+              fontSize: 12.0, // Đặt kích thước chữ nhỏ
+            ),
             controller: controller,
             obscureText: obscureText,
             decoration: InputDecoration(
@@ -38,12 +40,17 @@ class CustomInputField extends StatelessWidget {
               hintStyle: GoogleFonts.openSans(
                 textStyle: const TextStyle(
                   color: Colors.grey,
-                  fontSize: 14,
+                  fontSize: 12,
                 ),
               ),
               enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
                   color: Colors.grey,
+                ),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.grey, // Giữ nguyên màu viền khi focus
                 ),
               ),
               border: const OutlineInputBorder(),

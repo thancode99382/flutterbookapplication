@@ -11,7 +11,41 @@ class Suggest extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: const Text("Suggest"),
+        title: Text(
+            'Gợi ý cho bạn',style: GoogleFonts.openSans(
+            textStyle: const TextStyle(
+              color: Colors.white,
+              fontSize: 17,
+              fontWeight: FontWeight.bold,
+            )
+        )
+        ),
+
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              "assets/images/roa.png",
+              width: 200, // Chiều rộng mong muốn
+              height: 200, // Chiều cao mong muốn
+              fit: BoxFit.contain, // Tùy chỉnh cách hình ảnh phù hợp (optional)
+            ),
+
+            const SizedBox(height: 20),
+            Text(
+                'Để xem được gợi ý dành riêng cho bạn,vui lòng xem ít'
+                , style: GoogleFonts.openSans(
+            )
+            ),
+            Text(
+                ' nhất ba sản phẩm.', style: GoogleFonts.openSans(
+            )
+            ),
+          ],
+        ),
       ),
     );
   }
