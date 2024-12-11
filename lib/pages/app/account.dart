@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'component/showTopSnackBar.dart';
+
 class Account extends StatelessWidget
 {
     Account({super.key});
@@ -60,12 +62,13 @@ class Account extends StatelessWidget
 
             ),
             drawer: Drawer(
-                backgroundColor: Colors.white,
+                backgroundColor: Colors.black.withOpacity(0.5),
+
                 child: ListView(
                     padding: EdgeInsets.zero,
                     children: [
                         const DrawerHeader(decoration: BoxDecoration(
-                                color: Colors.red
+
 
                             ),
                             child: Center(
@@ -88,9 +91,10 @@ class Account extends StatelessWidget
                                             );
                                         },
                                         child: ListTile(
-                                            leading: Icon(Icons.logout),
+                                            leading: const Icon(Icons.logout,color: Colors.white,),
                                             title: Text('L O G O U T' ,style: GoogleFonts.openSans(
-                                                    fontWeight: FontWeight.w500
+                                                    fontWeight: FontWeight.w500,
+                                              color: Colors.white
                                                 ))
                                         )
                                     )
@@ -187,10 +191,7 @@ class Account extends StatelessWidget
                                             }
                                             else
                                             {
-                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                    const SnackBar(content: Text('Tính năng này chưa có'))
-                                                );
-                                            }
+                                              ShowTopSnackBar().snackBar(icon: Icons.info_outline_rounded , title: "Thông báo",message: "Tính này sẽ sớm phát hành",context: context);                                            }
 
                                         },
                                         child: ListTile(

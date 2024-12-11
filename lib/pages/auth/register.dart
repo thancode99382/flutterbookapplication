@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../app/component/showTopSnackBar.dart';
 import 'component/custom_button.dart';
 import 'component/custom_input_field.dart';
 
@@ -32,16 +33,12 @@ class _RegisterState extends State<Register>
        String password = _passwordController.text;
 
        if (email.isEmpty || password.isEmpty) {
-         ScaffoldMessenger.of(context).showSnackBar(
-           const SnackBar(content: Text('Vui lòng nhập đầy đủ thông tin!')),
-         );
+         ShowTopSnackBar().snackBar(icon: Icons.warning_amber , title: "Thông báo",message: "Vui lòng nhập đầy đủ thông tin",context: context);
          return;
        }
 
        if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(email)) {
-         ScaffoldMessenger.of(context).showSnackBar(
-           const SnackBar(content: Text('Email không hợp lệ!')),
-         );
+         ShowTopSnackBar().snackBar(icon: Icons.warning_amber , title: "Thông báo",message: "Vui lòng điền email",context: context);
          return;
        }
 
@@ -55,14 +52,10 @@ class _RegisterState extends State<Register>
            return const MainLayoutPrivate();
          },)
          );
-         ScaffoldMessenger.of(context).showSnackBar(
-           const SnackBar(content: Text('Đăng ký thành công!')),
-         );
+         ShowTopSnackBar().snackBar(icon: Icons.info_outline_rounded , title: "Thông báo",message: "Đăng kí thành công ",context: context);
 
        }else{
-         ScaffoldMessenger.of(context).showSnackBar(
-           const SnackBar(content: Text('Đăng ký Thất bại!')),
-         );
+         ShowTopSnackBar().snackBar(icon: Icons.warning_amber , title: "Thông báo",message: "Đăng kí thất bại",context: context);
        }
      }
 
