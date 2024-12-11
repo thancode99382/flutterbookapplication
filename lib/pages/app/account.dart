@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'component/showTopSnackBar.dart';
+import 'my_order.dart';
 
 class Account extends StatelessWidget
 {
@@ -118,13 +119,22 @@ class Account extends StatelessWidget
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                    Text("Đơn hàng của tôi",style: GoogleFonts.openSans(
-                                            textStyle: const TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.bold
-
-                                            )
+                                    GestureDetector(
+                                      onTap: (){
+                                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                          return MyOrder();
+                                        },
                                         )
+                                        );
+                                      },
+                                      child: Text("Đơn hàng của tôi",style: GoogleFonts.openSans(
+                                              textStyle: const TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.bold
+
+                                              )
+                                          )
+                                      ),
                                     ),
                                     Center(
                                         child: Container(

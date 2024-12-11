@@ -7,7 +7,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
+import '../../viewmodels/order_view_model.dart';
 import 'component/showTopSnackBar.dart';
+import 'info_completed_order.dart';
 
 class Cart extends StatelessWidget
 {
@@ -114,55 +116,57 @@ class Cart extends StatelessWidget
                                                                     child: Row(
                                                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                         children: [
-                                                                          GestureDetector(
-                                                                            onTap: (){
-                                                                              CartViewModel().updateProductCart(product['productId'],'decrease');
-                                                                            },
-                                                                            child: Container(
-                                                                              color: Colors.transparent,
-                                                                              height: 30,
-                                                                              width: 30,
-                                                                              child: const Center(
-                                                                                child: FaIcon(
-                                                                                    FontAwesomeIcons.minus,size: 14
-                                                                                ),
-                                                                              ),
+                                                                            GestureDetector(
+                                                                                onTap: ()
+                                                                                {
+                                                                                    CartViewModel().updateProductCart(product['productId'],'decrease');
+                                                                                },
+                                                                                child: Container(
+                                                                                    color: Colors.transparent,
+                                                                                    height: 30,
+                                                                                    width: 30,
+                                                                                    child: const Center(
+                                                                                        child: FaIcon(
+                                                                                            FontAwesomeIcons.minus,size: 14
+                                                                                        )
+                                                                                    )
+                                                                                )
                                                                             ),
-                                                                          ),
 
                                                                             Container(
-                                                                              width: 30,
+                                                                                width: 30,
                                                                                 margin: EdgeInsets.symmetric(vertical: 3),
                                                                                 decoration: const BoxDecoration(
-                                                                                  color: Colors.white,
-                                                                                  borderRadius: BorderRadius.all(Radius.circular(3))
+                                                                                    color: Colors.white,
+                                                                                    borderRadius: BorderRadius.all(Radius.circular(3))
                                                                                 ),
-                                                                                
-                                                                                child:  Center(
+
+                                                                                child: Center(
                                                                                     child: Text("${product['quantity']}",
                                                                                         style: GoogleFonts.openSans(
                                                                                             textStyle: const TextStyle(
-                                                                                              fontWeight: FontWeight.bold
+                                                                                                fontWeight: FontWeight.bold
                                                                                             )
                                                                                         )
-                                                                                    ),
+                                                                                    )
                                                                                 )
                                                                             ),
 
                                                                             GestureDetector(
-                                                                              onTap: (){
-                                                                                CartViewModel().updateProductCart(product['productId'],'increase');
-                                                                              },
-                                                                              child: Container(
-                                                                                color: Colors.transparent,
-                                                                                height: 30,
-                                                                                width: 30,
-                                                                                child: const Center(
-                                                                                  child: FaIcon(
-                                                                                      FontAwesomeIcons.plus,size: 14
-                                                                                  ),
-                                                                                ),
-                                                                              ),
+                                                                                onTap: ()
+                                                                                {
+                                                                                    CartViewModel().updateProductCart(product['productId'],'increase');
+                                                                                },
+                                                                                child: Container(
+                                                                                    color: Colors.transparent,
+                                                                                    height: 30,
+                                                                                    width: 30,
+                                                                                    child: const Center(
+                                                                                        child: FaIcon(
+                                                                                            FontAwesomeIcons.plus,size: 14
+                                                                                        )
+                                                                                    )
+                                                                                )
                                                                             )
                                                                         ]
                                                                     )
@@ -171,8 +175,8 @@ class Cart extends StatelessWidget
 
                                                                 IconButton(onPressed: ()
                                                                     {
-                                                                      CartViewModel().updateProductCart(product['productId'],'delete');
-                                                                      ShowTopSnackBar().snackBar(icon: Icons.info_outline_rounded , title: "Thông báo",message: "Bạn đã xóa sản phẩm",context: context);
+                                                                        CartViewModel().updateProductCart(product['productId'],'delete');
+                                                                        ShowTopSnackBar().snackBar(icon: Icons.info_outline_rounded , title: "Thông báo",message: "Bạn đã xóa sản phẩm",context: context);
 
                                                                     }, icon: const FaIcon(FontAwesomeIcons.trashCan,size: 19))
 
@@ -229,8 +233,34 @@ class Cart extends StatelessWidget
                                         ]
                                     ),
                                     SizedBox(height: 40,
-                                        child: CustomButton(onTap: ()
+                                        child: CustomButton(
+                                            onTap: ()
                                             {
+
+                                                try
+                                                {
+
+                                                    if (products.isEmpty)
+                                                    {
+                                                      ShowTopSnackBar().snackBar(icon: Icons.info_outline_rounded , title: "Thông báo",message: "Giỏ hàng trống",context: context);
+
+
+                                                    }else{
+                                                      OrderViewModel().createOrder();
+                                                      Navigator.push(context, MaterialPageRoute(builder: (context)
+                                                      {
+                                                        return const InforCompletedOder();
+                                                      }
+                                                      )
+                                                      );
+                                                    }
+
+                                                }
+                                                catch(e)
+                                                {
+                                                    print(e);
+                                                }
+
                                             }, btnText: "Mua" , btnColor: Colors.orange,btnWidth: 150,fontWeight: FontWeight.bold))
                                 ]
                             )

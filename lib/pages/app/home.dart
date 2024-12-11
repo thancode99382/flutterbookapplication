@@ -67,8 +67,8 @@ class Home extends StatelessWidget {
                       children: [
                         Image.asset(
                           itemSuggest[index]["image"],
-                          height: 50,
-                          width: 50,
+                          height: 40,
+                          width: 40,
                         ),
                         const SizedBox(height: 2),
                         Text(
