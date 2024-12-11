@@ -45,6 +45,7 @@ dependencies:
   intl: ^0.18.1
   provider: ^6.1.2
   another_flushbar: ^1.12.30
+  confetti: ^0.8.0
 
 dev_dependencies:
   flutter_test:
