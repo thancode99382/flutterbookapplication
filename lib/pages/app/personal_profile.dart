@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'component/showTopSnackBar.dart';
+
 class PersonalProfile extends StatefulWidget {
   const PersonalProfile({super.key});
 
@@ -50,9 +52,7 @@ class _PersonalProfileState extends State<PersonalProfile>{
     }catch(e){
       // Xử lý lỗi
       print('Đã xảy ra lỗi khi cập nhật: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Đã xảy ra lỗi, vui lòng thử lại!')),
-      );
+      ShowTopSnackBar().snackBar(icon: Icons.info_outline_rounded , title: "Thông báo",message: "Thông tin chưa được cập nhật",context: context);
     }
   }
 
@@ -70,20 +70,15 @@ class _PersonalProfileState extends State<PersonalProfile>{
           phone: phoneController.text
       );
 // Hiển thị thông báo thành công (tuỳ chọn)
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Cập nhật thành công!')),
-      );
+      ShowTopSnackBar().snackBar(icon: Icons.info_outline_rounded , title: "Thông báo",message: "Bạn đã cập nhật thông tin thành công",context: context);
 
-      // Đóng màn hình
-      Navigator.pop(context);
+
 
 
     }catch(e){
 // Xử lý lỗi
       print('Đã xảy ra lỗi khi cập nhật: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Đã xảy ra lỗi, vui lòng thử lại!')),
-      );
+      ShowTopSnackBar().snackBar(icon: Icons.info_outline_rounded , title: "Thông báo",message: "Vui lòng cập nhật thông tin",context: context);
     }
 
 

@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../models/category.dart';
 import '../../viewmodels/products_view_model.dart';
 import 'component/custom_banner.dart';
+import 'component/showTopSnackBar.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -58,25 +59,30 @@ class Home extends StatelessWidget {
               ),
               delegate: SliverChildBuilderDelegate(
                     (context, index) {
-                    return Column(
-                    children: [
-                      Image.asset(
-                        itemSuggest[index]["image"],
-                        height: 50,
-                        width: 50,
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        itemSuggest[index]["name"],
-                        style: GoogleFonts.openSans(
-                          textStyle: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
+                    return GestureDetector(
+                      onTap: () {
+                        ShowTopSnackBar().snackBar(icon: Icons.info_outline_rounded , title: "Thông báo",message: "Chức năng này chưa có",context: context);
+                      },
+                      child: Column(
+                      children: [
+                        Image.asset(
+                          itemSuggest[index]["image"],
+                          height: 50,
+                          width: 50,
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          itemSuggest[index]["name"],
+                          style: GoogleFonts.openSans(
+                            textStyle: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  );
+                      ],
+                                        ),
+                    );
                 },
                 childCount: itemSuggest.length,
               ),

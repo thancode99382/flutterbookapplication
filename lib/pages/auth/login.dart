@@ -8,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../app/component/showTopSnackBar.dart';
 import 'component/custom_button.dart';
 import 'component/custom_input_field.dart';
 
@@ -39,16 +40,11 @@ class _LoginState extends State<Login> {
     String password = _passwordController.text;
 
     if(email.isEmpty || password.isEmpty ){
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Vui lòng nhập đầy đủ thông tin!')),
-
-      );
+      ShowTopSnackBar().snackBar(icon: Icons.warning_amber , title: "Thông báo",message: "Vui lòng điền đầy đủ thông tin",context: context);
     }
 
     if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(email)) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Email không hợp lệ!')),
-      );
+      ShowTopSnackBar().snackBar(icon: Icons.warning_amber , title: "Thông báo",message: "Vui lòng điền email",context: context);
       return;
     }
 
@@ -65,9 +61,7 @@ class _LoginState extends State<Login> {
 
 
     }else{
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Đăng nhập Thất bại!')),
-      );
+      ShowTopSnackBar().snackBar(icon: Icons.error_outline , title: "Thông báo",message: "Đăng nhập thất bại",context: context);
     }
 
 
